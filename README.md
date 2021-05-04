@@ -1,9 +1,15 @@
 # mcbot
+~~为了应付某大作业,恰好此项目刚好满足大作业的需求,从而继续写了一点~~
 qq-android协议的python实现
 
 参考自：
-[pymirai](https://github.com/synodriver/pymirai)
-[MiraiGo](https://github.com/Mrs4s/MiraiGo)
+[pymirai](https://github.com/synodriver/pymirai),[MiraiGo](https://github.com/Mrs4s/MiraiGo)
+
+# 开始使用
+    pip install -r requirements.txt
+    python main.py
+
+由于大作业要求是必须含有界面（？就使用了tk库。
 
 # 已完成功能/开发计划
 #### 登录
@@ -63,7 +69,7 @@ qq-android协议的python实现
 - [ ] 群设置 (全体禁言/群名)
 - [ ] 修改群成员Card
 - [ ] 修改群成员头衔
-- [ ] ~~群成员邀请~~
+- [ ] 群成员邀请
 - [ ] 群成员禁言/解除禁言
 - [ ] T出群成员
 - [ ] 戳一戳群友
