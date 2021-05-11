@@ -51,12 +51,14 @@ class Form(object):
         togroup = self.en1.get()
         text = self.text_send.get('1.0','end')
         text = text[:-1]
+        self.addlog('发送群聊:' + togroup + '消息: ' + text)
         self.protocol.sendGroupMsg_raw(int(togroup),text)
 
     def sendfriendmsg(self):
         touin = self.en1.get()
         text = self.text_send.get('1.0','end')
         text = text[:-1]
+        self.addlog('发送好友:' + touin + '消息: ' + text)
         self.protocol.sendFriendMsg_raw(int(touin),text)
 
     def addlog(self, text):

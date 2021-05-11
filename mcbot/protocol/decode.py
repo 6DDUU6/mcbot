@@ -22,7 +22,7 @@ def Unpack_PbPushGroupMsg(data, logtext):
                 elem.customFace.md5
             ) + ",url=http://gchat.qpic.cn" + elem.customFace.origUrl + "]"
     if content != "":
-        ret = "收到群 " + groupName.decode() + "(" + str(
+        ret = "收到群 " + groupName.decode('utf-8','ignore') + "(" + str(
             groupCode) + ") " + groupCard + "(" + str(
                 fromUin) + ")的消息: " + content
         print(ret)
@@ -39,16 +39,17 @@ def Unpack_PbGetMsg(data, logtext):
         fromUin = upm.peerUin
         content = ""
         for message in upm.messages:
+            content = ""
             for elem in message.body.richText.elems:
                 if elem.HasField("text"):  # 文本
                     content += elem.text.str
-                if elem.HasField("customFace"):  # 图片或动画表情
+                if elem.HasField("notOnlineImage"):  # 图片或动画表情
                     content += "[pic,hash=" + _bytes2hex(
-                        elem.customFace.md5
-                    ) + ",url=http://gchat.qpic.cn" + elem.customFace.origUrl + "]"
-            if content != "":
-                ret = "收到好友 (" + str(fromUin) + ") 的消息: " + content
-                print(ret)
-                logtext.insert('end', ret + '\n')
-                logtext.see('end')
+                        elem.notOnlineImage.picMd5
+                    ) + ",url=http://gchat.qpic.cn" + elem.notOnlineImage.origUrl + "]"
+        if content != "":
+            ret = "收到好友 (" + str(fromUin) + ") 的消息: " + content
+            print(ret)
+            logtext.insert('end', ret + '\n')
+            logtext.see('end')
     return syncCookies
